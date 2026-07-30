@@ -1,0 +1,66 @@
+{
+  "public_config/security_rules": {
+    "version": 1,
+    "blockedDomains": [
+      "example-malware.invalid",
+      "example-phishing.invalid"
+    ],
+    "trustedDomains": [
+      "google.com",
+      "microsoft.com",
+      "apple.com",
+      "npci.org.in",
+      "uidai.gov.in",
+      "gov.in"
+    ],
+    "shorteners": [
+      "bit.ly",
+      "tinyurl.com",
+      "t.co",
+      "goo.gl",
+      "cutt.ly",
+      "rb.gy",
+      "is.gd",
+      "rebrand.ly"
+    ],
+    "riskyTlds": [
+      "zip",
+      "mov",
+      "click",
+      "top",
+      "xyz"
+    ],
+    "suspiciousKeywords": [
+      "login",
+      "verify",
+      "password",
+      "wallet",
+      "bank",
+      "kyc",
+      "urgent",
+      "gift",
+      "reward",
+      "claim",
+      "support"
+    ],
+    "dangerousExtensions": [
+      "apk",
+      "exe",
+      "msi",
+      "bat",
+      "cmd",
+      "scr",
+      "jar",
+      "ps1"
+    ]
+  },
+  "public_config/trusted_domains": {
+    "version": 1,
+    "trustedDomains": [
+      "npci.org.in",
+      "uidai.gov.in",
+      "india.gov.in",
+      "digilocker.gov.in"
+    ]
+  }
+}

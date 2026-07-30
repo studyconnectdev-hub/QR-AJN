@@ -1,0 +1,111 @@
+openapi: 3.1.1
+info:
+  title: QR AJN Backend
+  version: 4.0.0
+  description: Optional Blaze backend for dynamic QR redirects and business workflows.
+servers:
+  - url: https://YOUR_CLOUD_RUN_URL
+components:
+  securitySchemes:
+    AdminKey:
+      type: apiKey
+      in: header
+      name: x-admin-key
+    FirebaseBearer:
+      type: http
+      scheme: bearer
+      bearerFormat: FirebaseIDToken
+  schemas:
+    Error:
+      type: object
+      properties:
+        error: {type: string}
+paths:
+  /health:
+    get:
+      responses:
+        '200': {description: Service health}
+  /r/{id}:
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: {type: string}
+      responses:
+        '302': {description: Redirect to validated destination}
+        '404': {description: Missing or inactive link}
+        '410': {description: Expired or scan limit reached}
+  /v1/links:
+    post:
+      security: [{AdminKey: []}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [destination]
+              properties:
+                destination: {type: string, format: uri}
+                label: {type: string, maxLength: 120}
+                expiresAt: {type: string, format: date-time}
+                maxScans: {type: integer, minimum: 1}
+      responses:
+        '201': {description: Dynamic link created}
+  /v1/security/inspect:
+    post:
+      security: [{AdminKey: []}]
+      responses:
+        '200': {description: Public-network destination validation result}
+  /v1/security/expand:
+    post:
+      security: [{AdminKey: []}]
+      responses:
+        '200': {description: Redirect chain expanded with a pinned DNS lookup per hop}
+  /v1/dashboard/metrics:
+    get:
+      security: [{AdminKey: []}]
+      responses:
+        '200': {description: Aggregate dashboard counts}
+  /v1/inventory/events:
+    post:
+      security: [{AdminKey: []}]
+      responses:
+        '201': {description: Inventory event accepted}
+  /v1/attendance/events:
+    post:
+      security: [{AdminKey: []}]
+      responses:
+        '201': {description: Attendance event accepted}
+  /v1/tickets/redeem:
+    post:
+      security: [{AdminKey: []}]
+      responses:
+        '200': {description: Transactional ticket redemption result}
+  /v1/products/verify:
+    post:
+      responses:
+        '200': {description: Product authenticity lookup}
+  /v1/billing/google-play/verify:
+    post:
+      security: [{FirebaseBearer: []}]
+      description: Verifies a Google Play subscription with the Android Publisher API and writes the user's server entitlement.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [userId, productId, purchaseToken]
+              properties:
+                userId: {type: string}
+                productId: {type: string}
+                purchaseToken: {type: string}
+      responses:
+        '200': {description: Verified entitlement}
+  /v1/subscriptions/entitlements:
+    post:
+      security: [{AdminKey: []}]
+      responses:
+        '200': {description: Server-side entitlement lookup}

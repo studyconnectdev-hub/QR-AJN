@@ -1,0 +1,13 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="scan_now"
+        android:enabled="true"
+        android:icon="@drawable/ic_scan_shortcut"
+        android:shortcutShortLabel="@string/shortcut_scan_short_label"
+        android:shortcutLongLabel="@string/shortcut_scan_long_label">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.qr.ajn"
+            android:targetClass="com.qr.ajn.MainActivity" />
+    </shortcut>
+</shortcuts>

@@ -1,0 +1,17 @@
+QR AJN GOOGLE PLAY PRODUCTS
+
+Create these subscriptions in Monetize > Products > Subscriptions:
+1. qrajn_pro_monthly
+2. qrajn_pro_yearly
+3. qrajn_business_monthly
+
+For each:
+- Add active base plan
+- Add regional pricing
+- Add benefits and offer tags
+- Activate subscription
+- Add license test users
+- Publish app to an internal test track before testing purchases
+
+Package: com.qr.ajn
+Production server verification: blaze_backend /v1/billing/google-play/verify

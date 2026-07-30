@@ -1,0 +1,9 @@
+.dart_tool/
+.packages
+.pub/
+build/
+android/local.properties
+android/key.properties
+android/app/google-services.json
+*.jks
+*.keystore

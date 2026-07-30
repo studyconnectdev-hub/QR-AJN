@@ -1,0 +1,92 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function owner(uid) { return signedIn() && request.auth.uid == uid; }
+    function validSlug(value) {
+      return value is string && value.size() >= 3 && value.size() <= 48 && value.matches('^[a-z0-9][a-z0-9_-]*$');
+    }
+    function hasPublishingEntitlement() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/entitlements/$(request.auth.uid))
+        && get(/databases/$(database)/documents/entitlements/$(request.auth.uid)).data.active == true
+        && get(/databases/$(database)/documents/entitlements/$(request.auth.uid)).data.plan in ['pro', 'business'];
+    }
+
+    match /public_config/{document} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /profile_templates/{templateId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /users/{uid} {
+      allow read, create, update, delete: if owner(uid);
+    }
+
+    match /business_profiles/{slug} {
+      allow read: if resource.data.published == true || (signedIn() && resource.data.ownerUid == request.auth.uid);
+      allow create: if signedIn()
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.slug == slug
+        && validSlug(slug)
+        && request.resource.data.keys().hasOnly([
+          'slug','ownerUid','name','title','company','photoUrl','logoUrl','phone','whatsapp','email',
+          'website','address','mapUrl','services','products','brochureUrl','upiId','appointmentUrl',
+          'socialLinks','template','primaryColor','published','updatedAt'
+        ])
+        && (request.resource.data.published == false || hasPublishingEntitlement());
+      allow update: if signedIn()
+        && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.slug == slug
+        && validSlug(slug)
+        && (request.resource.data.published == false || hasPublishingEntitlement());
+      allow delete: if signedIn() && resource.data.ownerUid == request.auth.uid;
+    }
+
+    match /dynamic_links/{code} {
+      allow read: if resource.data.active == true || (signedIn() && resource.data.ownerUid == request.auth.uid);
+      allow create: if signedIn()
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.active is bool
+        && request.resource.data.destination is string
+        && request.resource.data.destination.size() <= 4096;
+      allow update, delete: if signedIn() && resource.data.ownerUid == request.auth.uid;
+    }
+
+    match /entitlements/{uid} {
+      allow read: if owner(uid);
+      allow write: if false;
+    }
+
+    match /pending_purchase_receipts/{uid}/items/{receiptId} {
+      allow create: if owner(uid)
+        && request.resource.data.productId is string
+        && request.resource.data.serverVerificationData is string
+        && request.resource.data.keys().hasOnly([
+          'productId','purchaseId','transactionDate','source','serverVerificationData','createdAt'
+        ]);
+      allow read: if owner(uid);
+      allow update, delete: if false;
+    }
+
+    match /community_reports/{reportId} {
+      allow create: if
+        request.resource.data.keys().hasOnly(['hostHash', 'reason', 'createdAt', 'schemaVersion']) &&
+        request.resource.data.hostHash is string &&
+        request.resource.data.hostHash.matches('^[a-f0-9]{64}$') &&
+        request.resource.data.reason in ['user_suspicious', 'phishing', 'malware', 'payment_fraud', 'wrong_destination'] &&
+        request.resource.data.schemaVersion == 1 &&
+        request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

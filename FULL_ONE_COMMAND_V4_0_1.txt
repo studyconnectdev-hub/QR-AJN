@@ -1,0 +1,7 @@
+﻿QR AJN V4.0.1 FULL ONE COMMAND
+
+Place QR_AJN_COMPLETE_PRODUCTION_V4_0_1.zip in Downloads, then run:
+
+Set-ExecutionPolicy -Scope Process Bypass -Force; $zip="$env:USERPROFILE\Downloads\QR_AJN_COMPLETE_PRODUCTION_V4_0_1.zip"; $temp="$env:TEMP\QR_AJN_V4_0_1_LAUNCH"; if(!(Test-Path $zip)){throw "ZIP not found: $zip"}; if(Test-Path $temp){cmd /c "rd /s /q `"$temp`"" | Out-Null}; Expand-Archive -Path $zip -DestinationPath $temp -Force; $launcher=Get-ChildItem $temp -Recurse -Filter "START_QR_AJN_V4_0_1_FULL_SETUP.ps1" | Select-Object -First 1; if(!$launcher){throw "Launcher not found"}; & $launcher.FullName
+
+Use a QR AJN Firebase project ID. Do not paste console output back into PowerShell.

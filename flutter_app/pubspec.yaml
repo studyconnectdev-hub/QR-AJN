@@ -1,0 +1,50 @@
+name: private_safe_qr
+description: QR AJN advanced private QR scanner, smart redirector and custom generator.
+publish_to: "none"
+version: 4.0.0+40
+
+environment:
+  sdk: ">=3.10.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  mobile_scanner: ^7.4.0
+  qr_flutter: ^4.1.0
+  image_picker: ^1.2.3
+  url_launcher: ^6.3.2
+  share_plus: ^13.3.0
+  path_provider: ^2.1.6
+  crypto: ^3.0.7
+  shared_preferences: ^2.5.3
+  firebase_core: ^4.12.1
+  firebase_app_check: ^0.4.5+2
+  firebase_analytics: ^12.4.5
+  firebase_crashlytics: ^5.2.6
+  firebase_performance: ^0.11.4+5
+  firebase_remote_config: ^6.5.5
+  firebase_messaging: ^16.4.3
+  cloud_firestore: ^6.7.1
+  firebase_auth: ^6.5.6
+  google_mobile_ads: ^9.0.0
+  in_app_purchase: ^3.3.0
+  file_picker: ^11.0.2
+  pdf: ^3.11.3
+  qr: ^3.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/data/threat_rules.json
+    - assets/data/trusted_domains.json
+    - assets/images/app_logo.png

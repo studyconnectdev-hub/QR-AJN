@@ -1,0 +1,20 @@
+# Generated secrets and builds
+flutter_app/android/google-services.json
+flutter_app/android/key.properties
+flutter_app/secure_keys/
+KEYSTORE_RECOVERY_PRIVATE.txt
+release_symbols/
+flutter_app/build/
+flutter_app/.dart_tool/
+flutter_app/.flutter-plugins*
+blaze_backend/node_modules/
+.firebase/
+
+# QR AJN private production files
+flutter_app/secure_keys/
+flutter_app/android/key.properties
+UPLOAD_KEY_RECOVERY_PRIVATE.txt
+PRODUCTION_CONFIG.ps1
+PLAY_STORE_UPLOAD/
+**/google-services.json
+flutter_app/lib/firebase_options.dart

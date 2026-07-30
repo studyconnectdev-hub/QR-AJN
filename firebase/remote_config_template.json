@@ -1,0 +1,76 @@
+{
+  "conditions": [],
+  "parameters": {
+    "safescan_enabled": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Enable local SafeScan result scoring."
+    },
+    "community_reporting_enabled": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Allow sanitized community reports."
+    },
+    "ads_enabled": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Enable AdMob placements for free users. Production IDs are injected at build time."
+    },
+    "maintenance_message": {
+      "defaultValue": {
+        "value": ""
+      }
+    },
+    "minimum_supported_version": {
+      "defaultValue": {
+        "value": "4.0.0"
+      }
+    },
+    "blaze_api_base_url": {
+      "defaultValue": {
+        "value": ""
+      },
+      "description": "Set only after deploying the optional Blaze backend."
+    },
+    "threat_rules_json": {
+      "defaultValue": {
+        "value": "{\"version\":1,\"blockedDomains\":[\"example-malware.invalid\",\"example-phishing.invalid\"],\"trustedDomains\":[\"google.com\",\"microsoft.com\",\"apple.com\",\"npci.org.in\",\"uidai.gov.in\",\"gov.in\"],\"shorteners\":[\"bit.ly\",\"tinyurl.com\",\"t.co\",\"goo.gl\",\"cutt.ly\",\"rb.gy\",\"is.gd\",\"rebrand.ly\"],\"riskyTlds\":[\"zip\",\"mov\",\"click\",\"top\",\"xyz\"],\"suspiciousKeywords\":[\"login\",\"verify\",\"password\",\"wallet\",\"bank\",\"kyc\",\"urgent\",\"gift\",\"reward\",\"claim\",\"support\"],\"dangerousExtensions\":[\"apk\",\"exe\",\"msi\",\"bat\",\"cmd\",\"scr\",\"jar\",\"ps1\"]}"
+      },
+      "description": "Downloadable SafeScan rule payload. Keep under Remote Config parameter size limits."
+    },
+    "trusted_domains_json": {
+      "defaultValue": {
+        "value": "{\"version\":1,\"trustedDomains\":[\"npci.org.in\",\"uidai.gov.in\",\"india.gov.in\",\"digilocker.gov.in\"]}"
+      },
+      "description": "Downloadable exact-match trusted-business directory."
+    },
+    "premium_monthly_id": {
+      "defaultValue": {
+        "value": "qrajn_pro_monthly"
+      },
+      "description": "Google Play monthly subscription product ID."
+    },
+    "premium_yearly_id": {
+      "defaultValue": {
+        "value": "qrajn_pro_yearly"
+      },
+      "description": "Google Play yearly subscription product ID."
+    },
+    "business_monthly_id": {
+      "defaultValue": {
+        "value": "qrajn_business_monthly"
+      },
+      "description": "Google Play business subscription product ID."
+    },
+    "public_domain": {
+      "defaultValue": {
+        "value": "https://qrajn.online"
+      },
+      "description": "Public QR AJN business-profile domain."
+    }
+  },
+  "parameterGroups": {}
+}
