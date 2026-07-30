@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "trustedDomains": [
+    "npci.org.in",
+    "uidai.gov.in",
+    "india.gov.in",
+    "digilocker.gov.in"
+  ]
+}

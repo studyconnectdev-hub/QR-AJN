@@ -1,0 +1,151 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function owner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function validSlug(value) {
+      return value is string
+        && value.size() >= 3
+        && value.size() <= 48
+        && value.matches('^[a-z0-9][a-z0-9_-]*$');
+    }
+
+    function hasPublishingEntitlement() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/entitlements/$(request.auth.uid))
+        && get(/databases/$(database)/documents/entitlements/$(request.auth.uid)).data.active == true
+        && get(/databases/$(database)/documents/entitlements/$(request.auth.uid)).data.plan in ['pro', 'business'];
+    }
+
+    function ownsResource() {
+      return signedIn() && resource.data.ownerUid == request.auth.uid;
+    }
+
+    function validBusinessProfile(data, slug) {
+      return data.keys().hasOnly([
+          'slug','ownerUid','name','title','company','coverUrl','photoUrl','logoUrl',
+          'phone','whatsapp','email','website','address','mapUrl','services','products',
+          'priceList','galleryUrls','videoUrls','brochureUrl','upiId','reviewUrl',
+          'leadFormUrl','appointmentUrl','openingHours','branchLocations','languages',
+          'testimonials','certifications','offers','socialLinks','template',
+          'primaryColor','published','updatedAt'
+        ])
+        && data.slug == slug
+        && validSlug(slug)
+        && data.ownerUid == request.auth.uid
+        && data.name is string
+        && data.name.size() > 0
+        && data.name.size() <= 160
+        && data.published is bool
+        && (data.published == false || hasPublishingEntitlement());
+    }
+
+    function validDynamicLink(data) {
+      return data.keys().hasOnly([
+          'ownerUid','title','destination','androidDestination','iosDestination',
+          'desktopDestination','fallbackDestination','active','expiresAt',
+          'maximumScans','maxScans','scanCount','createdAt','updatedAt','lastScannedAt'
+        ])
+        && data.ownerUid == request.auth.uid
+        && data.title is string
+        && data.title.size() <= 120
+        && data.destination is string
+        && data.destination.size() > 0
+        && data.destination.size() <= 4096
+        && data.destination.matches('^https?://.*')
+        && data.active is bool
+        && data.scanCount is int
+        && data.scanCount >= 0
+        && (!('maximumScans' in data)
+            || data.maximumScans == null
+            || (data.maximumScans is int && data.maximumScans > 0))
+        && (!('maxScans' in data)
+            || data.maxScans == null
+            || (data.maxScans is int && data.maxScans > 0))
+        && hasPublishingEntitlement();
+    }
+
+    match /public_config/{document} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /profile_templates/{templateId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /users/{uid} {
+      allow read, create, update, delete: if owner(uid);
+    }
+
+    match /business_profiles/{slug} {
+      allow read: if resource.data.published == true || ownsResource();
+      allow create: if signedIn() && validBusinessProfile(request.resource.data, slug);
+      allow update: if ownsResource()
+        && request.resource.data.ownerUid == resource.data.ownerUid
+        && validBusinessProfile(request.resource.data, slug);
+      allow delete: if ownsResource();
+    }
+
+    match /dynamic_links/{code} {
+      allow read: if resource.data.active == true || ownsResource();
+      allow create: if signedIn() && validDynamicLink(request.resource.data);
+      allow update: if ownsResource()
+        && request.resource.data.ownerUid == resource.data.ownerUid
+        && validDynamicLink(request.resource.data);
+      allow delete: if ownsResource() && hasPublishingEntitlement();
+    }
+
+    match /business_analytics/{uid} {
+      allow read: if owner(uid);
+      allow write: if false;
+    }
+
+    match /leads/{uid}/items/{leadId} {
+      allow read, delete: if owner(uid);
+      allow create, update: if false;
+    }
+
+    match /entitlements/{uid} {
+      allow read: if owner(uid);
+      allow write: if false;
+    }
+
+    match /pending_purchase_receipts/{uid}/items/{receiptId} {
+      allow create: if owner(uid)
+        && request.resource.data.productId is string
+        && request.resource.data.serverVerificationData is string
+        && request.resource.data.keys().hasOnly([
+          'productId','purchaseId','transactionDate','source',
+          'serverVerificationData','createdAt'
+        ]);
+      allow read: if owner(uid);
+      allow update, delete: if false;
+    }
+
+    match /community_reports/{reportId} {
+      allow create: if request.resource.data.keys().hasOnly([
+          'hostHash','reason','createdAt','schemaVersion'
+        ])
+        && request.resource.data.hostHash is string
+        && request.resource.data.hostHash.matches('^[a-f0-9]{64}$')
+        && request.resource.data.reason in [
+          'user_suspicious','phishing','malware','payment_fraud','wrong_destination'
+        ]
+        && request.resource.data.schemaVersion == 1
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

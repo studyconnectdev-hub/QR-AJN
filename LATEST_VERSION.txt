@@ -1,0 +1,3 @@
+﻿QR AJN Complete Production V5.0.0
+Flutter version: 5.0.0+50
+Android package: com.qr.ajn

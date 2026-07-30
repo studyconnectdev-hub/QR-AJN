@@ -1,0 +1,40 @@
+﻿APP NAME
+QR AJN
+
+SHORT DESCRIPTION
+Scan safely, create custom QR codes and publish digital business profiles.
+
+FULL DESCRIPTION
+QR AJN is an advanced QR scanner, professional QR generator and digital business identity platform.
+
+FAST, PRIVATE SCANNING
+• Scan QR codes and supported barcodes with automatic focus and zoom
+• Select a QR when several codes appear in the camera
+• Scan from gallery images
+• Review links and actions before opening
+• No compulsory login and no automatic scan history
+
+SAFE UPI AND SMART ACTIONS
+• Review payee name, UPI ID, amount, currency and payment note
+• Open PhonePe, Google Pay, Paytm, BHIM or another compatible UPI app
+• Handle websites, deep links, Wi-Fi, contacts, calls, SMS, email, maps, social profiles, app links, tickets and structured QR data
+• SafeScan warnings for suspicious destinations and risky file links
+
+30 PROFESSIONAL QR CATEGORIES
+Create QR codes for websites, text, Wi-Fi, UPI payments, contacts, locations, calendar events, business profiles, products, menus, price lists, reviews, coupons, event tickets, appointments, WhatsApp, Telegram, Instagram, Facebook, YouTube, LinkedIn, app downloads, deep links, multi-link pages, documents and more.
+
+QR DESIGN STUDIO
+• Professional gradients and color palettes
+• Square, rounded, dot and diamond modules
+• Captions, margin and error-correction controls
+• Live preview and scan-quality score
+• PNG sharing and download
+• Premium SVG and PDF export
+
+QRAJN.ONLINE BUSINESS PROFILES
+Create an optional digital business profile with a public qrajn.online link. Add contact actions, products, services, social links, brochure, UPI payment and appointment links. Update a published profile without reprinting its QR code.
+
+FREE AND PREMIUM
+The free plan includes core scanning and QR creation with ads. QR AJN Pro removes ads and unlocks professional designs and exports. QR AJN Business adds cloud business-profile and advanced business tools.
+
+Scan safely. Create professionally. Share your business instantly.

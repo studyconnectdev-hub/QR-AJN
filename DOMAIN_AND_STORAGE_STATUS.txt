@@ -1,0 +1,56 @@
+﻿QR AJN CUSTOM DOMAIN AND STORAGE STATUS
+
+Firebase project:
+unna-space-prod-226ff4
+
+Domain:
+qrajn.online
+
+Hosting:
+https://unna-space-prod-226ff4.web.app
+
+Core Firebase:
+DEPLOYED
+- Firestore rules
+- Firestore indexes
+- Remote Config
+- Firebase Hosting
+
+Cloud Storage:
+PENDING_BLAZE_AND_CONSOLE_SETUP
+
+CUSTOM DOMAIN
+
+1. Open:
+   https://console.firebase.google.com/project/unna-space-prod-226ff4/hosting/sites
+
+2. Click Add custom domain.
+
+3. Enter:
+   qrajn.online
+
+4. Add the exact DNS records displayed by Firebase to your registrar.
+
+5. Also connect:
+   www.qrajn.online
+
+6. Add authorized domains in Firebase Authentication:
+   - qrajn.online
+   - www.qrajn.online
+   - unna-space-prod-226ff4.web.app
+   - unna-space-prod-226ff4.firebaseapp.com
+
+CLOUD STORAGE LATER
+
+To enable business images, logos, gallery files and brochures:
+
+1. Upgrade the Firebase project to Blaze.
+2. Open:
+   https://console.firebase.google.com/project/unna-space-prod-226ff4/storage
+3. Click Get started.
+4. Choose the desired bucket location.
+5. Rerun:
+   firebase deploy --project "unna-space-prod-226ff4" --only storage
+
+Important:
+Use the exact DNS records shown by Firebase Hosting.

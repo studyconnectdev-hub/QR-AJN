@@ -1,0 +1,32 @@
+﻿QR AJN GOOGLE PLAY PRODUCT SETUP
+
+Android package:
+com.qr.ajn
+
+Create these subscription product IDs exactly:
+
+1. qrajn_pro_monthly
+   Name: QR AJN Pro Monthly
+   Benefits: No ads, advanced QR design, PNG/SVG/PDF/high-resolution exports.
+
+2. qrajn_pro_yearly
+   Name: QR AJN Pro Yearly
+   Benefits: Same Pro benefits billed yearly.
+
+3. qrajn_business_monthly
+   Name: QR AJN Business Monthly
+   Benefits: Public profiles, dynamic QR, business templates, leads and analytics.
+
+4. qrajn_business_yearly
+   Name: QR AJN Business Yearly
+   Benefits: Same Business benefits billed yearly.
+
+Play Console steps:
+Monetize with Play > Products > Subscriptions
+Create each product, add an active base plan, configure India pricing and activate it.
+
+IMPORTANT:
+- Google test ad IDs are safe only for development.
+- Replace them with real QR AJN AdMob IDs before publishing a revenue-enabled release.
+- Complete the AdMob privacy/message setup and Play Data Safety declaration.
+- Server verification requires the optional Blaze backend and Android Publisher API access.

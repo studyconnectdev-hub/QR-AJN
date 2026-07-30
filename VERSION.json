@@ -1,0 +1,9 @@
+{
+  "product": "QR AJN",
+  "release": "5.0.0",
+  "flutterVersion": "5.0.0+50",
+  "androidPackage": "com.qr.ajn",
+  "domain": "qrajn.online",
+  "generatorCategories": 30,
+  "firebaseMode": "Spark-first with optional Blaze backend"
+}

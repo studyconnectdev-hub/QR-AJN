@@ -1,0 +1,30 @@
+﻿QR AJN V5 — ONE DIRECT COMMAND
+
+Download these two files into Downloads:
+- QR_AJN_COMPLETE_PRODUCTION_V5_0_0.zip
+- START_QR_AJN_V5_FULL_SETUP.ps1
+
+Keep the Android phone unlocked with USB debugging enabled, then run:
+
+Set-ExecutionPolicy -Scope Process Bypass -Force; & "$env:USERPROFILE\Downloads\START_QR_AJN_V5_FULL_SETUP.ps1"
+
+The setup asks for:
+- The new Firebase Project ID you created
+- GitHub repository URL
+- Domain name
+- Optional real AdMob app/ad-unit IDs
+- Whether to build the signed Play Store AAB
+- Whether to deploy the optional Blaze backend
+
+Permanent project path:
+C:\Users\vigne\Documents\QR_AJN_COMPLETE_PRODUCTION_V5_0_0
+
+Account-owner actions still completed in consoles:
+- Enable Firebase Google and Email/Password sign-in
+- Register Play Integrity App Check
+- Add the exact Firebase Hosting DNS records at the registrar
+- Create/activate four Play subscription base plans
+- Use the original Play upload key for an existing app
+- Upgrade to Blaze before Cloud Run deployment
+
+The setup never embeds or publishes your private upload keystore.
