@@ -43,3 +43,7 @@ FIREBASE_MANUAL_ACTIONS.txt
 *.iml
 .DS_Store
 Thumbs.db
+flutter_app/android/local.properties
+flutter_app/android/key.properties
+flutter_app/android/app/google-services.json
+flutter_app/secure_keys/
