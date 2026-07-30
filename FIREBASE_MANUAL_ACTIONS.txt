@@ -1,0 +1,20 @@
+﻿QR AJN FIREBASE MANUAL ACTIONS
+
+Project: unna-space-prod-226ff4
+Android package: com.qr.ajn
+
+1. Authentication > Sign-in method:
+   - Enable Email/Password
+   - Enable Google
+2. App Check:
+   - Register the Android app with Play Integrity
+   - Add the release SHA-256 certificate
+3. Firestore:
+   - Confirm rules and indexes deployed
+4. Remote Config:
+   - Set blaze_api_base_url only after deploying the optional Blaze backend
+5. Hosting:
+   - Add qrajn.online as a custom domain
+
+Console:
+https://console.firebase.google.com/project/unna-space-prod-226ff4/overview

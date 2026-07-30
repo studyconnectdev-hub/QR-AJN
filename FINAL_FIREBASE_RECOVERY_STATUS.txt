@@ -1,0 +1,19 @@
+﻿QR AJN FIREBASE RECOVERY STATUS
+
+Firebase project: unna-space-prod-226ff4
+Active Google account: studyconnectdev@gmail.com
+Firestore API: ENABLED
+Firestore default database: READY
+Firestore rules and indexes: DEPLOYED
+Remote Config: DEPLOYED
+Firebase Hosting: DEPLOYED
+GitHub: PENDING: GitHub push failed. Exit code: 128
+Signed AAB: PENDING: flutter pub get failed.
+
+MANUAL ACTIONS STILL REQUIRED:
+1. Firebase Authentication: enable Email/Password and Google providers.
+2. Firebase App Check: register Play Integrity and the release certificate.
+3. Firebase Hosting: add qrajn.online and copy the exact DNS records to the registrar.
+4. AdMob: replace Google's test IDs with real QR AJN production ad units.
+5. Play Console: create and activate premium subscription products and base plans.
+6. Blaze: required later for secure server purchase verification, Cloud Run redirects, and advanced analytics.
