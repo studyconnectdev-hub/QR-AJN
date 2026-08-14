@@ -1,49 +1,30 @@
-# Flutter / Dart
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.packages
-.pub-cache/
-build/
-coverage/
+# Vercel local project identity
+.vercel/
 
-# Android / Gradle
-.gradle/
-**/android/.gradle/
-**/android/local.properties
-**/android/key.properties
-**/android/app/google-services.json
-**/android/app/src/**/google-services.json
-**/secure_keys/
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Private credentials
+*.pem
+*.p12
+*.pfx
 *.jks
 *.keystore
+key.properties
+google-services.json
+service-account*.json
+firebase-admin*.json
 
-# Firebase generated private/local config
-.firebaserc
-firebase-debug.log
-firestore-debug.log
-ui-debug.log
-.flutterfire/
-flutter_app/lib/firebase_options.dart
-web_dashboard/firebase-config.js
-
-# Production local configuration
-PRODUCTION_CONFIG.ps1
-BUILD_DEFINES.ps1
-UPLOAD_KEY_RECOVERY_PRIVATE.txt
-PLAY_STORE_UPLOAD/
-BUILD_LOGS/
-FINAL_*_STATUS.txt
-DOMAIN_CONNECTION_STEPS.txt
-FIREBASE_MANUAL_ACTIONS.txt
-
-# Editors / OS
-.idea/
-.vscode/
-*.iml
+# Local OS/editor
 .DS_Store
 Thumbs.db
-flutter_app/android/local.properties
-flutter_app/android/key.properties
-flutter_app/android/app/google-services.json
-flutter_app/secure_keys/
+.vscode/
+.idea/

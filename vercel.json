@@ -1,0 +1,208 @@
+{
+    "cleanUrls":  true,
+    "version":  2,
+    "headers":  [
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Content-Type-Options",
+                                            "value":  "nosniff"
+                                        },
+                                        {
+                                            "key":  "Referrer-Policy",
+                                            "value":  "strict-origin-when-cross-origin"
+                                        },
+                                        {
+                                            "key":  "Permissions-Policy",
+                                            "value":  "camera=(), microphone=(), geolocation=()"
+                                        },
+                                        {
+                                            "key":  "X-Frame-Options",
+                                            "value":  "DENY"
+                                        }
+                                    ],
+                        "source":  "/(.*)"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, nofollow"
+                                        }
+                                    ],
+                        "source":  "/login"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, nofollow"
+                                        }
+                                    ],
+                        "source":  "/builder"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, nofollow"
+                                        }
+                                    ],
+                        "source":  "/dashboard"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, nofollow"
+                                        }
+                                    ],
+                        "source":  "/dynamic"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, nofollow"
+                                        }
+                                    ],
+                        "source":  "/analytics"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, nofollow"
+                                        }
+                                    ],
+                        "source":  "/admin"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, follow"
+                                        }
+                                    ],
+                        "source":  "/contact"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, follow"
+                                        }
+                                    ],
+                        "source":  "/pricing"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, follow"
+                                        }
+                                    ],
+                        "source":  "/blog"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, nofollow"
+                                        }
+                                    ],
+                        "source":  "/r/:code"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, nofollow"
+                                        }
+                                    ],
+                        "source":  "/q/:code"
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex"
+                                        }
+                                    ],
+                        "source":  "/api/(.*)"
+                    }
+                ],
+    "rewrites":  [
+                     {
+                         "destination":  "/api/profile-sitemap",
+                         "source":  "/sitemap-profiles.xml"
+                     },
+                     {
+                         "destination":  "/api/profile?slug=:slug",
+                         "source":  "/b/:slug"
+                     },
+                     {
+                         "destination":  "/api/redirect?code=:code",
+                         "source":  "/r/:code"
+                     },
+                     {
+                         "destination":  "/api/redirect?code=:code",
+                         "source":  "/q/:code"
+                     },
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/login"
+                     },
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/builder"
+                     },
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/dashboard"
+                     },
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/dynamic"
+                     },
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/analytics"
+                     },
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/admin"
+                     },
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/contact"
+                     },
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/pricing"
+                     },
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/blog"
+                     }
+                 ],
+    "redirects":  [
+                      {
+                          "destination":  "/b/:slug",
+                          "permanent":  true,
+                          "source":  "/@:slug"
+                      },
+                      {
+                          "destination":  "/b/:slug",
+                          "permanent":  true,
+                          "source":  "/business/:slug"
+                      },
+                      {
+                          "destination":  "/b/:slug",
+                          "permanent":  true,
+                          "source":  "/card/:slug"
+                      }
+                  ],
+    "trailingSlash":  false,
+    "$schema":  "https://openapi.vercel.sh/vercel.json"
+}
